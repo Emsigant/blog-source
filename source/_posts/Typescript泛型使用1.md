@@ -11,6 +11,7 @@ interface IHTMLTypeMap {
 }
 function createElement<T extends keyof IHTMLTypeMap>(tag: T): IHTMLTypeMap[T] {
     let ele = null;
+    ele = document.createElement('div');
     // some operations
     return ele
 }
