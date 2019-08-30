@@ -25,13 +25,4 @@ index_widgets:
 
 # widget behavior
 archive_type: 'monthly'
-show_count: false
-
-# Miscellaneous
-# google_analytics:
-# gauges_analytics:
-# favicon: /favicon.png
-twitter:
-google_plus:
-fb_admins:
-fb_app_id:
+show_count: true

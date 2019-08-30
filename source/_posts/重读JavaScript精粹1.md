@@ -1,7 +1,7 @@
 ---
 title: 重读JavaScript精粹1
 date: 2019-08-27 19:31:45
-tags:
+tags: javascript
 ---
 终于下定决心重读《JavaScript精粹》这本书了。
 

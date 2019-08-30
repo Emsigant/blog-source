@@ -1,15 +1,20 @@
 ---
 title: 重读JavaScript精粹2
 date: 2019-08-28 18:40:43
-tags:
+tags: javascript
 ---
 函数对象
 
 - 函数的定义：JavaScript的函数就是对象。特殊的是，每个函数对象会被连接到Function.prototype，在每个函数被创建时，都会附加两个隐藏的属性（函数上下文和实现函数的代码）。当一个函数被创建时，它的prototype会添加一个constructor属性，指向这个函数自身，Function构造器会运行类似这样的代码：
 
-``` javascript
-this.prototype = { constructor: this }
-```
+  ``` javascript
+  this.prototype = { constructor: this }
+
+  const Func = function() {};
+  const afunc = new Func();
+  afunc.__proto__ === Func.prototype; // 一个对象的constructor始终指向其构造函数
+  afunc.constructor === afunc.__proto__.constructor === Func;
+  ```
 
 - 函数字面量/Function Literals：函数对象可以通过函数字面量创建。通过函数字面量创建的函数对象包含一个连接到外部上下文的链接，这被称为闭包
 - 调用/Invocation：每调用一个函数，就会暂停当前函数的执行，传递控制权和参数给新函数。出了声明时定义的形式参数，每个函数还会接受两个附加的隐藏参数：this和arguments。this的值取决于调用方式。JavaScript中一共有4种调用方式：方法调用、函数调用、构造器调用和apply调用
