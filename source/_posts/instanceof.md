@@ -7,7 +7,7 @@ tags: javascript
 
 ### 描述
 
-instanceof运算符用于测试构造函数的prototype属性是否出现在对象的原型链中的**任何**位置
+instanceof运算符用于测试构造函数的prototype属性是否出现在**对象**的原型链中的**任何**位置
 
 ### 语法
 
@@ -17,8 +17,8 @@ instanceof运算符用于测试构造函数的prototype属性是否出现在对�
 
 ``` javascript
 // 定义构造函数
-function C(){} 
-function D(){} 
+function C(){};
+function D(){};
 
 var o = new C();
 
