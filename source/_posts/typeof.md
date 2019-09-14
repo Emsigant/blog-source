@@ -17,16 +17,16 @@ typeof *operand* 或者 *typeof(operand)*
 
 类型|结果
 --|--
-Undefined|    "undefined"
-Null|   "object"
-Boolean|    "boolean"
-Number| "number"
-BigInt| "bigint"
-String| "string"
-Symbol (ECMAScript 2015 新增)|  "symbol"
-宿主对象（由 JS 环境提供）| 取决于具体实现
-Function 对象 (按照 ECMA-262 规范实现 [[Call]])|    "function"
-其他任何对象|   "object"
+Undefined|"undefined"
+Null|"object"
+Boolean|"boolean"
+Number|"number"
+BigInt|"bigint"
+String|"string"
+Symbol (ECMAScript 2015 新增)|"symbol"
+宿主对象（由 JS 环境提供）|取决于具体实现
+Function 对象 (按照 ECMA-262 规范实现 [[Call]])|"function"
+其他**任何对象**|"object"
 
 ### 代码示例
 

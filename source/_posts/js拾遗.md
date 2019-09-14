@@ -7,7 +7,7 @@ tags: javascript
 
 需要考虑的点：
 
-- 是否有循环引用
+- 循环引用
 - 特殊值的处理（null、undefined等等）
 
 ``` javascript
@@ -47,7 +47,7 @@ function clone(value, srcStack, dstStack) {
             index = srcStack.lastIndexOf(prop);
             if (index >= 0) {
                 newValue[keys[i]] = dstStack[index];
-                continue;
+                continue; // 跳过后续递归
             }
         }
         newValue[keys[i]] = clone(prop, srcStack, dstStack);
@@ -55,3 +55,34 @@ function clone(value, srcStack, dstStack) {
     return newValue;
 }
 ```
+
+## Object.toString和Object.prototype.toString
+
+- Object.toString是Object函数继承自Function的方法，返回`function Object() {[native code]}`
+- Object.prototype.toString是Object的原型方法，返回`[object ToStringTag]`(可以通过Symbol.toStringTag修改)
+
+## `==`、`===`和`Object.is`
+
+### `==`
+
+参见[MDN非严格相等](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness#%E9%9D%9E%E4%B8%A5%E6%A0%BC%E7%9B%B8%E7%AD%89)
+
+### `===`和`Object.is`
+
+===和Object.is有两处不同：
+
+``` javascript
+//+0和-0
++0 === -0; // true
+Object.is(+0, -0); // false
+
+// NaN
+NaN === NaN; // false
+Object.is(NaN, NaN); // true
+```
+
+## `new.target`
+
+new.target是用来判断函数是否是通过new关键字调用的。
+new.target指向被调用的函数。new.target整体可以视为一个关键字，`new.`提供了一个“虚拟上下文”。
+在箭头函数中，new.target指向最近的外层函数的new.target。
