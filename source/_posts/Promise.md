@@ -80,3 +80,31 @@ new Promise(resolve => {
 }).then(() => console.log(8));
 // log: 7 8
 ```
+
+## 阅读Promise[一种实现](https://github.com/then/promise/blob/master/src/core.js)的源码
+
+以下是个人的简略解读，可以解释上述现象
+
+``` javascript
+new Promise(
+    // executor会在promise对象被Promise构造函数返回之前调用（这一点非常重要）
+    // promise会初始化一些属性，记作_state(resolve状态) = 0，_deferredState(_deferreds对象的状态，是由Handler构造函数构造的) = 0, _deferreds = null
+    function executor(resolve, reject) {
+        // resolve函数会将_state置为1，并调用finale函数
+        // finale函数中会判断_deferredState：
+        // 如果_deferredState为1或者2，则调用handle函数，其他情况不会执行任何代码
+        resolve(someValue);
+    }
+)
+// 在promise对象创建之后才会调用then方法（不调用then方法则不会有回调）
+// then方法内部会调用一个handle函数
+// 在handle函数会判断_state：
+// 如果_state不为0（在executor中同步调用resolve函数），直接调用handleResolved函数（handleResolved函数会将成功回调函数推入微任务队列执行，源码用的是asap库，是用MutationObserver实现的）
+// 如果_state为0，表明executor中的resolve函数可能是被异步调用的，此时promise对象的状态不为resolved。如果_deferredState === 0，则_deferredState置为1，并将onFulFilled函数作为封装成一个Handler，将_deferreds置为该Handler，用于在异步resolve执行时，提供给finale函数使用，finale函数会调用handle函数
+.then(
+    // 会被封装成一个Handler对象
+    function onFulFilled() {
+        // do something
+    }
+)
+```
