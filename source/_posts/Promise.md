@@ -32,7 +32,7 @@ Promise构造函数在执行时**立即调用executor**(executor函数在Promise
   
   对于所有非thenable的值，都会直接将其resolve；thenable的值，则会根据以运行结果判断。当Promise.all的参数为[]或者空字符串时(或者定义了空的Symbol.iterator的任意值)时，返回一个*同步的*resolved的promise。如果iterable不包含任何thenable对象，则返回一个*异步的*resolved的promise(Chrome是例外，会返回一个同步的promise)。
 
-- Promise.race(iterable): 返回一个新的Promise对象，iterable中**任意**一个成功或者失败都会调用其对应回调。
+- Promise.race(iterable): 返回一个新的Promise对象，iterable中**任意**一个*成功或者失败*都会调用其对应回调。
 - Promise.reject(reason): 返回一个失败状态的Promise对象，并将reason传递给对应处理方法。
 - Promise.resolve(value): 返回一个状态由value决定的Promise对象。如果value是thenable对象(带then方法的对象)，则状态由then方法执行决定；其他情况，则该Promise的状态为fulfilled。
 

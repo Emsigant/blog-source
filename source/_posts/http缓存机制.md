@@ -11,7 +11,7 @@ tags:
 
 ``` http
 GET /index.html HTTP/1.1 #请求的方法，URI和http版本
-Host: developer.mozilla.org:443 #请求的主机和端口
+Host: developer.mozilla.org:80 #请求的主机和端口
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9) Gecko/20100101 Firefox/50.0 #userAgent
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 #客户端接受的类型
 Accept-Language: en-US,en;q=0.5 #客户端接受的语言

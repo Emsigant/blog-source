@@ -86,3 +86,7 @@ Object.is(NaN, NaN); // true
 new.target是用来判断函数是否是通过new关键字调用的。
 new.target指向被调用的函数。new.target整体可以视为一个关键字，`new.`提供了一个“虚拟上下文”。
 在箭头函数中，new.target指向最近的外层函数的new.target。
+
+## Array.prototype
+
+Array.prototype是一个**数组**，length为0，Array的原型方法均为该数组的方法，但该数组的__proto__仍然指向Object.prototype。Array.isArray()可以使用Object.prototype.toString.call()实现polyfill。
