@@ -18,6 +18,6 @@
     "hexo-server": "^0.3.3"
   },
   "scripts": {
-    "deploy":"hexo clean; hexo generate -d"
+    "deploy": "hexo clean; hexo generate -d"
   }
 }
